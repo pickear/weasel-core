@@ -1,4 +1,4 @@
-package com.weasel.core.helper.test;
+package com.weasel.lang.test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

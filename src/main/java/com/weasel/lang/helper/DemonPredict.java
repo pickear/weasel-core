@@ -18,9 +18,7 @@ public final class DemonPredict {
 	 * @param value
 	 */
     public static void isTrue(boolean expression, String message, Object value) {
-        if (expression == false) {
-            throw new IllegalArgumentException(message + value);
-        }
+    	 isTrue(expression, new IllegalArgumentException(message + value));
     }
 
     /**
@@ -29,9 +27,7 @@ public final class DemonPredict {
      * @param value
      */
     public static void isTrue(boolean expression, String message, long value) {
-        if (expression == false) {
-            throw new IllegalArgumentException(message + value);
-        }
+    	 isTrue(expression, new IllegalArgumentException(message + value));
     }
 
    /**
@@ -40,9 +36,7 @@ public final class DemonPredict {
     * @param value
     */
     public static void isTrue(boolean expression, String message, double value) {
-        if (expression == false) {
-            throw new IllegalArgumentException(message + value);
-        }
+        isTrue(expression, new IllegalArgumentException(message + value));
     }
 
    /**
@@ -50,19 +44,24 @@ public final class DemonPredict {
     * @param message
     */
     public static void isTrue(boolean expression, String message) {
-        if (expression == false) {
-            throw new IllegalArgumentException(message);
-        }
+    	 isTrue(expression, new IllegalArgumentException(message));
     }
 
    /**
     * @param expression
     */
     public static void isTrue(boolean expression) {
-        if (expression == false) {
-            throw new IllegalArgumentException("The validated expression is false");
-        }
+        isTrue(expression, new IllegalArgumentException("The validated expression is false"));
     }
+    
+    /**
+     * @param expression
+     */
+     public static void isTrue(boolean expression,RuntimeException exception) {
+         if (expression == false) {
+             throw exception;
+         }
+     }
 
     /**
      * @param object
@@ -76,8 +75,16 @@ public final class DemonPredict {
      * @param message
      */
     public static void notNull(Object object, String message) {
+        notNull(object, new IllegalArgumentException(message));
+    }
+    
+    /**
+     * @param object
+     * @param message
+     */
+    public static void notNull(Object object, RuntimeException exception) {
         if (object == null) {
-            throw new IllegalArgumentException(message);
+            throw exception;
         }
     }
 
@@ -86,9 +93,7 @@ public final class DemonPredict {
      * @param message
      */
     public static void notEmpty(Object[] array, String message) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException(message);
-        }
+        notEmpty(array, new IllegalArgumentException(message));
     }
 
     /**
@@ -97,15 +102,22 @@ public final class DemonPredict {
     public static void notEmpty(Object[] array) {
         notEmpty(array, "The validated array is empty");
     }
+    
+    /**
+     * @param array
+     */
+    public static void notEmpty(Object[] array,RuntimeException exception) {
+    	 if (array == null || array.length == 0) {
+             throw exception;
+         }
+    }
 
     /**
      * @param collection
      * @param message
      */
     public static void notEmpty(Collection<Object> collection, String message) {
-        if (collection == null || collection.size() == 0) {
-            throw new IllegalArgumentException(message);
-        }
+        notEmpty(collection,new IllegalArgumentException(message));
     }
 
     /**
@@ -114,14 +126,31 @@ public final class DemonPredict {
     public static void notEmpty(Collection<Object> collection) {
         notEmpty(collection, "The validated collection is empty");
     }
+    
+    /**
+     * @param collection
+     */
+    public static void notEmpty(Collection<Object> collection,RuntimeException exception) {
+    	 if (collection == null || collection.size() == 0) {
+             throw exception;
+         }
+    }
 
     /**
      * @param map
      * @param message
      */
     public static void notEmpty(Map<Object,Object> map, String message) {
+        notEmpty(map,new IllegalArgumentException(message));
+    }
+    
+    /**
+     * @param map
+     * @param message
+     */
+    public static void notEmpty(Map<Object,Object> map, RuntimeException exception) {
         if (map == null || map.size() == 0) {
-            throw new IllegalArgumentException(message);
+            throw exception;
         }
     }
 
@@ -137,8 +166,12 @@ public final class DemonPredict {
      * @param message
      */
     public static void notEmpty(String string, String message) {
+        notEmpty(string, new IllegalArgumentException(message));
+    }
+    
+    public static void notEmpty(String string, RuntimeException exception) {
         if (string == null || string.length() == 0) {
-            throw new IllegalArgumentException(message);
+            throw exception;
         }
     }
 
@@ -154,10 +187,18 @@ public final class DemonPredict {
      * @param message
      */
     public static void noNullElements(Object[] array, String message) {
+    	noNullElements(array, new IllegalArgumentException(message));
+    }
+    
+    /**
+     * @param array
+     * @param exception
+     */
+    public static void noNullElements(Object[] array, RuntimeException exception) {
         notNull(array);
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
-                throw new IllegalArgumentException(message);
+                throw exception;
             }
         }
     }
@@ -179,10 +220,18 @@ public final class DemonPredict {
      * @param message
      */
     public static void noNullElements(Collection<Object> collection, String message) {
+        noNullElements(collection,new IllegalArgumentException(message));
+    }
+    
+    /**
+     * @param collection
+     * @param exception
+     */
+    public static void noNullElements(Collection<Object> collection, RuntimeException exception) {
         notNull(collection);
         for (Iterator<Object> it = collection.iterator(); it.hasNext();) {
             if (it.next() == null) {
-                throw new IllegalArgumentException(message);
+                throw exception;
             }
         }
     }
@@ -206,11 +255,20 @@ public final class DemonPredict {
      * @param message
      */
     public static <T> void allElementsOfType(Collection<Object> collection, Class<T> clazz, String message) {
+        allElementsOfType(collection, clazz, new IllegalArgumentException(message));
+    }
+    
+    /**
+     * @param collection
+     * @param clazz
+     * @param exception
+     */
+    public static <T> void allElementsOfType(Collection<Object> collection, Class<T> clazz, RuntimeException exception) {
         notNull(collection);
         notNull(clazz);
         for (Iterator<Object> it = collection.iterator(); it.hasNext(); ) {
             if (clazz.isInstance(it.next()) == false) {
-                throw new IllegalArgumentException(message);
+                throw exception;
             }
         }
     }
