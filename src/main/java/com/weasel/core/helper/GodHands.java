@@ -1,4 +1,4 @@
-package com.weasel.lang.helper;
+package com.weasel.core.helper;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -8,8 +8,6 @@ import java.lang.reflect.Type;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
 
 /**上帝之手
  * through the class's name we can know,this class hope to help the peple who
@@ -32,7 +30,7 @@ public final class GodHands {
 	public static Object getFieldValue(final Object instance, final String fieldName) {
 
 		Field field = getAccessibleField(instance, fieldName);
-		DemonPredict.notNull(field, StringHelper.format("{0}not be found", fieldName));
+		DemonPredict.notNull(field,"fieldName not be found");
 		try {
 			return field.get(instance);
 		} catch (IllegalAccessException e) {
@@ -51,7 +49,7 @@ public final class GodHands {
 
 		Field field = getAccessibleField(instance, fieldName);
 
-		DemonPredict.notNull(field, fieldName + StringHelper.format("{0}not be founded", fieldName));
+		DemonPredict.notNull(field, "fieldName not be founded");
 
 		try {
 			field.set(instance, value);
@@ -120,8 +118,9 @@ public final class GodHands {
 	 * @return
 	 */
 	public static Field getAccessibleField2(final Class<?> clazz, final String fieldName) {
+		DemonPredict.notEmpty(fieldName, "fieldName can not empty!");
 		Class<?> tempClazz = clazz;
-		String[] gradationField = StringUtils.split(fieldName, ".");
+		String[] gradationField = fieldName.split(".");
 		Field field = null;
 		for (String f : gradationField) {
 			field = getAccessibleField(tempClazz, f);
@@ -235,7 +234,7 @@ public final class GodHands {
 	public static Object invokeMethod(Object instance, String methodName, Class<?> parameterTypes, Object... args) {
 
 		Method method = getAccessibleMethod(instance, methodName, parameterTypes);
-		DemonPredict.notNull(method, StringHelper.format("method {0} not be found", methodName));
+		DemonPredict.notNull(method, "method "+methodName+" not be found");
 		try {
 			return method.invoke(instance, args);
 		} catch (Exception e) {

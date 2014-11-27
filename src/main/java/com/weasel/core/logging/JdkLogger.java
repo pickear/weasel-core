@@ -1,4 +1,4 @@
-package com.weasel.lang.logging;
+package com.weasel.core.logging;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;

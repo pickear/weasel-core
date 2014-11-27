@@ -1,12 +1,12 @@
-package com.weasel.lang;
+package com.weasel.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Lists;
-import com.weasel.lang.helper.DemonPredict;
+import com.weasel.core.helper.DemonPredict;
 
 /**
  * 
@@ -48,7 +48,7 @@ public class Page<T> implements Serializable{
 	/**
 	 * the query result,what we want to get
 	 */
-	private List<T> result = Lists.newArrayList();
+	private List<T> result = new ArrayList<T>();
 	/**
 	 * the params for query
 	 */

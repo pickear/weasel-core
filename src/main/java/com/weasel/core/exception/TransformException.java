@@ -1,7 +1,7 @@
 /**
  * TransformException.java
  */
-package com.weasel.lang.exception;
+package com.weasel.core.exception;
 
 /**类型转换异常
  * @author Dylan

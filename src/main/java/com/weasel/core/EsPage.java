@@ -1,4 +1,4 @@
-package com.weasel.lang;
+package com.weasel.core;
 
 import java.util.HashMap;
 import java.util.Map;

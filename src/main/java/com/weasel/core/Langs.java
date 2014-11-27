@@ -1,9 +1,9 @@
-package com.weasel.lang;
+package com.weasel.core;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 
-import com.weasel.lang.helper.DemonPredict;
+import com.weasel.core.helper.DemonPredict;
 
 /**
  * @author Dylan

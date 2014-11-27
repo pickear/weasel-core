@@ -1,11 +1,11 @@
 /**
  * BaseObject.java
  */
-package com.weasel.lang;
+package com.weasel.core;
 
 import java.io.Serializable;
 
-import com.weasel.lang.annotation.Id;
+import com.weasel.core.annotation.Id;
 
 /**
  * @author Dylan

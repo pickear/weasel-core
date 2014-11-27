@@ -1,4 +1,3 @@
-weasel-lang
+weasel-core
 ===========
-
-一个lang，提示一些基础的东西。
+一个核心包
