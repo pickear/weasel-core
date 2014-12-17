@@ -2,7 +2,7 @@ package com.weasel.core;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,9 +52,9 @@ public class Page<T> implements Serializable{
 	/**
 	 * the params for query
 	 */
-	private Map<String,Object> params = new HashMap<String, Object>();
+	private Map<String,Object> params = new LinkedHashMap<String, Object>();
 	
-    private Map<String,Sort> sorts = new HashMap<String,Sort>();
+    private Map<String,Sort> sorts = new LinkedHashMap<String,Sort>();
 
 	public int getPageSize() {
 		return pageSize;
