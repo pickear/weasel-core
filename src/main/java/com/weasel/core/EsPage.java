@@ -12,12 +12,12 @@ import java.util.Map;
 public class EsPage<T> extends Page<T>{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1503312445725594692L;
-	
+
 	private Map<String, Map<String, Integer>> facets = new HashMap<String, Map<String, Integer>>();
-	
+
 	public Map<String, Map<String, Integer>> getFacets() {
 		return facets;
 	}
