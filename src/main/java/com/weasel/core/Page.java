@@ -9,7 +9,7 @@ import java.util.Map;
 import com.weasel.core.helper.DemonPredict;
 
 /**
- * 
+ * 在很多应用场景中，我们都需要分页查询，因为数据量原因，或者我们并不关心所有的数据。Page对象用于分布查询场景，里面定义了一些分页查询所需的信息。
  * @author Dylan
  * @time 下午3:55:10
  */
